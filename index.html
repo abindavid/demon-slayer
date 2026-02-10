@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demon Slayer Animated Site</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Orbitron', sans-serif;
+        }
+
+        body{
+            background: linear-gradient(270deg,#000000,#0f2027,#203a43,#2c5364);
+            background-size:800% 800%;
+            animation: bgMove 15s ease infinite;
+            color:white;
+            overflow-x:hidden;
+        }
+
+        @keyframes bgMove{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+
+        header{
+            text-align:center;
+            padding:40px;
+            font-size:3rem;
+            letter-spacing:4px;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow{
+            from{text-shadow:0 0 10px #00ffff;}
+            to{text-shadow:0 0 25px #ff0000,0 0 40px #ff0000;}
+        }
+
+        .container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:40px;
+            padding:50px;
+        }
+
+        .card{
+            position:relative;
+            height:380px;
+            border-radius:20px;
+            overflow:hidden;
+            cursor:pointer;
+            transform-style:preserve-3d;
+            transition:1s;
+        }
+
+        .card:hover{
+            transform:rotateY(180deg) scale(1.05);
+        }
+
+        .card img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+
+        .front, .back{
+            position:absolute;
+            width:100%;
+            height:100%;
+            backface-visibility:hidden;
+        }
+
+        .back{
+            background:linear-gradient(45deg,#ff512f,#dd2476);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:1.5rem;
+            transform:rotateY(180deg);
+        }
+
+        /* Floating animation */
+        .card{
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float{
+            0%,100%{transform:translateY(0);}
+            50%{transform:translateY(-15px);}
+        }
+
+        /* Fire particles */
+        .particles span{
+            position:absolute;
+            bottom:-50px;
+            width:10px;
+            height:10px;
+            background:orange;
+            border-radius:50%;
+            animation: rise 6s linear infinite;
+        }
+
+        @keyframes rise{
+            0%{transform:translateY(0) scale(1);opacity:1;}
+            100%{transform:translateY(-800px) scale(0);opacity:0;}
+        }
+
+        footer{
+            text-align:center;
+            padding:30px;
+            opacity:0.7;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    ⚔️ DEMON SLAYER ⚔️
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <div class="front">
+            <!-- Replace tanjiro.jpg -->
+            <img src="tanjiro.jpg" alt="Tanjiro">
+        </div>
+        <div class="back">Tanjiro Kamado 🔥</div>
+    </div>
+
+    <div class="card">
+        <div class="front">
+            <!-- Replace nezuko.jpg -->
+            <img src="nezuko.jpg" alt="Nezuko">
+        </div>
+        <div class="back">Nezuko Kamado 🌸</div>
+    </div>
+
+    <div class="card">
+        <div class="front">
+            <!-- Replace inosuke.jpg -->
+            <img src="inosuke.jpg" alt="Inosuke">
+        </div>
+        <div class="back">Inosuke Hashibira 🐗</div>
+    </div>
+
+    <div class="card">
+        <div class="front">
+            <!-- Replace zenitsu.jpg -->
+            <img src="zenitsu.jpg" alt="Zenitsu">
+        </div>
+        <div class="back">Zenitsu Agatsuma ⚡</div>
+    </div>
+
+</div>
+
+<!-- Fire particles -->
+<div class="particles"></div>
+
+<footer>
+    Demon Slayer Fan Page | Built with Animations
+</footer>
+
+<script>
+
+// Create floating fire particles
+const particles = document.querySelector('.particles');
+
+for(let i=0;i<40;i++){
+    let span = document.createElement('span');
+    span.style.left = Math.random()*100 + 'vw';
+    span.style.animationDuration = (Math.random()*3+3) + 's';
+    span.style.width = span.style.height = Math.random()*8+4 + 'px';
+    particles.appendChild(span);
+}
+
+</script>
+
+</body>
+</html>
